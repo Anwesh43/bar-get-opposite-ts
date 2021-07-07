@@ -54,29 +54,29 @@ export const useStyle = (w,  h , scale) => {
     const sf   = Math.sin(scale * Math.PI)
     const position = 'absolute'
     return {
-        parentStyle() {
+        parentStyle(shouldTransform) {
             const left = `${w / 2}px`
             const top = `${h / 2}px`
+            const transform = shouldTransform ? `rotate(${180}deg)` : `rotate(0deg)`
             return {
                 position, 
                 left, 
-                top 
+                top,
+                transform 
             }
         }, 
         barStyle(i) {
             const ji   = Math.floor((i / 2))
             const ai   = Math.floor((i + 1) / 2)
             const left = `${-barW / 2 + barW * ai}px`
-            const top = `${-barH / 2 + h * .5 * (1 - sf)}px`
-            const transform = `rotate(${180 * ji}deg)`
-            const width = `${-barW}px`
-            const height = `${-barH}px`
+            const top = `${-barH / 2 + h * .5 * (1 - sf) * ai}px`
+            const width = `${barW}px`
+            const height = `${barH}px`
             const background = 'indigo'
             return {
                 position, 
                 left, 
                 top, 
-                transform, 
                 width, 
                 height,
                 background

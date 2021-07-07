@@ -7,8 +7,8 @@ const BarOppoBar = (props) => {
     return (
         <React.Fragment>
             {[0, 1, 2].map((i) => (
-                <div style = {parentStyle()}>
-                    <div key = {`bar_${i}`} style = {barStyle(i)}>
+                <div style = {parentStyle(i == 2)}>
+                    <div key = {`bar_${i}`} style = {barStyle(i)} onClick = {() => props.onClick()}>
                     </div>
                 </div>
             ))}
