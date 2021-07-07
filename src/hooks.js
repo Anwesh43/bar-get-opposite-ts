@@ -1,7 +1,7 @@
-import {useState, useEffect, CSSProperties} from 'react'
+import {useState, useEffect} from 'react'
 
-const scGap : number = 0.02 
-const delay : number = 20 
+const scGap = 0.02 
+const delay  = 20 
 
 export const useAnimatedScale = () => {
 
@@ -13,7 +13,7 @@ export const useAnimatedScale = () => {
             if (!animated) {
                 setAnimated(true)
                 const interval = setInterval(() => {
-                    setScale((prev : number) => {
+                    setScale((prev) => {
                         if (prev > 1) {
                             setAnimated(false)
                             clearInterval(interval)
@@ -48,13 +48,13 @@ export const useDimension = () => {
     }
 }
 
-export const useStyle = (w : number, h : number, scale : number) => {
-    const barW : number = Math.min(w, h) / 10 
-    const barH : number = barW / 3
-    const sf : number = Math.sin(scale * Math.PI)
+export const useStyle = (w,  h , scale) => {
+    const barW   = Math.min(w, h) / 10 
+    const barH   = barW / 3
+    const sf   = Math.sin(scale * Math.PI)
     const position = 'absolute'
     return {
-        parentStyle() : CSSProperties {
+        parentStyle() {
             const left = `${w / 2}px`
             const top = `${h / 2}px`
             return {
@@ -63,9 +63,9 @@ export const useStyle = (w : number, h : number, scale : number) => {
                 top 
             }
         }, 
-        barStyle(i : number) {
-            const ji : number = Math.floor((i / 2))
-            const ai : number = Math.floor((i + 1) / 2)
+        barStyle(i) {
+            const ji   = Math.floor((i / 2))
+            const ai   = Math.floor((i + 1) / 2)
             const left = `${-barW / 2 + barW * ai}px`
             const top = `${-barH / 2 + h * .5 * (1 - sf)}px`
             const transform = `rotate(${180 * ji}deg)`
